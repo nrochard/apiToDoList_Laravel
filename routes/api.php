@@ -1,19 +1,17 @@
 <?php
 
 use App\Http\Controllers\ApiTokenController;
-use App\Http\Controllers\PostController;
+use App\Http\Controllers\TaskController;
 use Illuminate\Support\Facades\Route;
 
 
-Route::post('auth/register', [ApiTokenController::class, 'register']);
-Route::post('auth/login', [ApiTokenController::class, 'login']);
-Route::middleware('auth:sanctum')->post('auth/me', [ApiTokenController::class, 'me']);
-Route::middleware('auth:sanctum')->post('auth/logout', [ApiTokenController::class, 'logout']);
+Route::post('/register', [ApiTokenController::class, 'register']);
+Route::post('/login', [ApiTokenController::class, 'login']);
+// Route::middleware('auth:sanctum')->post('/logout', [ApiTokenController::class, 'logout']);
 
-Route::middleware('auth:sanctum')->get('auth/tasks', [PostController::class, 'index']);
-Route::middleware('auth:sanctum')->get('auth/tasks/{id}', [PostController::class, 'show']);
-Route::middleware('auth:sanctum')->post('auth/tasks', [PostController::class, 'create']);
-Route::middleware('auth:sanctum')->delete('auth/tasks/{id}', [PostController::class, 'delete']);
-Route::middleware('auth:sanctum')->put('auth/tasks/{id}', [PostController::class, 'delete']);
+Route::middleware('auth:sanctum')->get('/tasks', [TaskController::class, 'index']);
+Route::middleware('auth:sanctum')->post('/tasks', [TaskController::class, 'store']);
+Route::middleware('auth:sanctum')->delete('/tasks/{id}', [TaskController::class, 'delete']);
+Route::middleware('auth:sanctum')->put('/tasks/{id}', [TaskController::class, 'delete']);
 
 // Route::middleware()->apiResource()

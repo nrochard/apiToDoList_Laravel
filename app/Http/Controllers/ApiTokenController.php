@@ -80,12 +80,12 @@ class ApiTokenController extends Controller
         ], 200);
     }
 
-    public function posts(Request $request)
+    public function tasks(Request $request)
     {
         // Je récupère dans 
-        $posts = $request->user()->posts()->get();
+        $tasks = $request->user()->tasks()->get();
         // $posts = Post::get(); 
-        return $posts;
+        return $tasks;
     }
 
 
