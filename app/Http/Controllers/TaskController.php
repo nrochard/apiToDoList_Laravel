@@ -16,9 +16,6 @@ class TaskController extends Controller
     public function index(Request $request)
     {
         $tasks = $request->user()->tasks()->get();
-
-        // dd($request->user());
-        print_r($tasks);
         return response()->json($tasks);
     }
 
